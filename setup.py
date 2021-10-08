@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 with open('requirements.txt', 'r') as f:
@@ -24,7 +24,7 @@ setup(
     long_description_content_type="text/markdown",
     url='https://github.com/geekmoss/py-volby.cz',
     install_requires=install_reqs,
-    packages=['volby_cz'],
+    packages=find_packages(),
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3.8",
