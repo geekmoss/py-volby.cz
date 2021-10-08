@@ -54,7 +54,7 @@ class Deputy:  # Node - POSLANEC
             prefix=xml_node.attrib.get('TITULPRED'),
             suffix=xml_node.attrib.get('TITULZA'),
             prefer_vote_count=int(xml_node.attrib.get('PREDNOSTNI_HLASY')),
-            prefer_vote_percent=float(xml_node.attrib.get('PREDNOSTNI_HLASY')),
+            prefer_vote_percent=float(xml_node.attrib.get('PREDNOSTNI_HLASY_PROC')),
         )
         return deputy
     pass
@@ -139,7 +139,7 @@ class Region:
             region_name=xml_node.attrib.get('NAZ_KRAJ'),
             total_mandate_count=int(xml_node.attrib.get('POCMANDATU', 0)),
             voter_turnout=VoterTurnout.from_xml_node(voter_turnout, xml_node),
-            parties=[Party.from_xml_node(p, xml_node) for p in parties],
+            parties=[Party.from_xml_node(p, namespace) for p in parties],
         )
         return region
     pass
