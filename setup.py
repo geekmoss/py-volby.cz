@@ -15,7 +15,7 @@ with open("README.md", 'r') as f:
 
 setup(
     name='Volby.cz',
-    version='0.1',
+    version='0.2',
     description='Module for retrieving and parsing open data from the website volby.cz, portal of the '
                 'Czech Statistical Office in the Czech Republic, presenting the election results.',
     author='Jakub Janeček',
@@ -28,6 +28,8 @@ setup(
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

@@ -8,3 +8,12 @@ class ChamberOfDeputiesElectionEnum(enum.Enum):
 
     def __str__(self):
         return self.value
+
+
+class PresidentElectionEnum(enum.Enum):
+    year_2013 = 'prez2013'
+    year_2018 = 'prez2018'
+    year_2023 = 'prez2023'
+
+    def __str__(self):
+        return self.value

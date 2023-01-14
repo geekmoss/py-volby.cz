@@ -1,10 +1,3 @@
-from .PS import (
-    Ps,
-    Results,
-    Party,
-    PartyResult,
-    Deputy,
-    VoterTurnout,
-    CzechRepublic,
-    Region,
-)
+from .PS import Ps
+from .President import President
+
