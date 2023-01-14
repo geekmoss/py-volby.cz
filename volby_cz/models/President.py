@@ -22,7 +22,7 @@ class Candidate:  # NODE - KANDIDAT
     suffix: str  # Attr - TITULZA
     first_round_vote_count: int  # Attr - HLASY_1KOLO
     first_round_vote_percent: float  # Attr - HLASY_PROC_1KOLO
-    first_round_elected: ElectedStatus  # Attr - ZVOLEN_1KOLO
+    first_round_elected: Optional[ElectedStatus]  # Attr - ZVOLEN_1KOLO
     second_round_vote_count: Optional[int] = None  # Attr - HLASY_2KOLO
     second_round_vote_percent: Optional[float] = None  # Attr - HLASY_PROC_2KOLO
     second_round_elected: Optional[ElectedStatus] = None  # Attr - ZVOLEN_2KOLO
@@ -30,6 +30,7 @@ class Candidate:  # NODE - KANDIDAT
 
     @staticmethod
     def from_xml_node(xml_node: Element, namespace):
+        first_round_elected = xml_node.attrib.get('ZVOLEN_1KOLO')
         candidate = Candidate(
             ordinal_number=int(xml_node.attrib.get('PORADOVE_CISLO')),
             name=xml_node.attrib.get('JMENO'),
@@ -38,7 +39,7 @@ class Candidate:  # NODE - KANDIDAT
             suffix=xml_node.attrib.get('TITULZA'),
             first_round_vote_count=int(xml_node.attrib.get('HLASY_1KOLO')),
             first_round_vote_percent=float(xml_node.attrib.get('HLASY_PROC_1KOLO')),
-            first_round_elected=ElectedStatus(xml_node.attrib.get('ZVOLEN_1KOLO')),
+            first_round_elected=ElectedStatus(first_round_elected) if first_round_elected is not None else None,
         )
 
         if candidate.first_round_elected == ElectedStatus.SECOND_ROUND:
